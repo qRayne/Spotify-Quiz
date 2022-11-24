@@ -1,4 +1,4 @@
-package /*votre package*/;
+package com.example.quizspotify;
 
 import android.content.SharedPreferences;
 

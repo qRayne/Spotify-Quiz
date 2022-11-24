@@ -1,4 +1,4 @@
-package /*votre_package*/;
+package com.example.quizspotify;
 
 public class User {
 
