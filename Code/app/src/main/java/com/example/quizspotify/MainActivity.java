@@ -12,7 +12,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         // je crée la queue
         // je créer un shared preferences et on get l'id de l'utilisateur
-        sharedPreferences  = getApplicationContext().getSharedPreferences("SPOTIFY", 0);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("SPOTIFY", 0);
         instance = RequestQueueSingleton.getInstance(this);
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -43,17 +44,17 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println(response);
             }
-        },null);
-
+        },null){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                String token = sharedPreferences.getString("token", "");
+                String auth = "Bearer " + token;
+                headers.put("Authorization", auth);
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
         instance.addToRequestQueue(jsonObjectRequest);
-
-        @Override
-        public Map<String, String> getHeaders () throws AuthFailureError {
-            Map<String, String> headers = new HashMap<>();
-            String token = sharedPreferences.getString("token", "");
-            String auth = "Bearer " + token;
-            headers.put("Authorization", auth);
-            headers.put("Content-Type", "application/json; charset=utf-8");
-            return headers;
-        }
     }
+}
