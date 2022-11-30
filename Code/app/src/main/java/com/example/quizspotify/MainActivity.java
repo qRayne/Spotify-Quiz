@@ -13,6 +13,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     JsonObjectRequest jsonObjectRequest1,jsonObjectRequest2;
     RequestQueueSingleton instance;
     TextView nomArtiste1,noPopularite1,nbFollowers1,genreMusic1,nomArtiste2,noPopularite2,nbFollowers2,genreMusic2;
-    ImageView imageArtiste1, imageArtiste2;
+    NetworkImageView imageArtiste1, imageArtiste2;
     Vector<Artiste> vectorArtiste;
 
     @Override
@@ -119,11 +120,13 @@ public class MainActivity extends AppCompatActivity {
                 noPopularite1.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
                 nbFollowers1.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
                 genreMusic1.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
+                imageArtiste1.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
             } else {
                 nomArtiste2.setText(String.format("le nom de l'artiste : %s", vectorArtiste.get(i).getNomArtiste()));
                 noPopularite2.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
                 nbFollowers2.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
                 genreMusic2.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
+                imageArtiste2.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
             }
         }
     }
