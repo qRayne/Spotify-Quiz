@@ -60,7 +60,7 @@ public class IdentActivity extends AppCompatActivity {
     }
 
     private void startMainActivity() {
-        Intent newintent = new Intent(IdentActivity.this,MainActivity.class);
+        Intent newintent = new Intent(IdentActivity.this,StartActivity.class);
         startActivity(newintent);
     }
     @Override

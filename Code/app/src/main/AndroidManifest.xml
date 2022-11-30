@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizSpotify">
         <activity android:name=".MainActivity" />
+        <activity android:name=".StartActivity" />
+        <activity android:name=".Question1" />
+        <activity android:name=".Question2" />
+        <activity android:name=".Question3" />
         <activity android:name=".IdentActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 // on manipule le data avec notre fonction
                 try {
+                    System.out.println(response);
                     onResponseRequest(response);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
