@@ -24,7 +24,6 @@ public class Requete {
     private Vector<JSONObject> jsonObjectsVector;
     private Vector<Object> vectorElements;
     private String typeElement;
-    int compteur = 0;
 
     public Requete(Context context,String typeElement) {
         this.context = context;
@@ -40,16 +39,7 @@ public class Requete {
                 url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                compteur++;
-                jsonObjectsVector.add(response);
 
-                if (compteur == 2) {
-                    try {
-                        remplirVector(((Question1)context).recupererVector(jsonObjectsVector));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
             }
         }
                 , null){
@@ -72,23 +62,23 @@ public class Requete {
     }
 
 
-    public void remplirVector(Vector<JSONObject> vector) throws JSONException {
-        switch (typeElement) {
-            case "Artiste":
-                for (int i = 0; i < jsonObjectsVector.size(); i++) {
-                    vectorElements.add(new Artiste(jsonObjectsVector.get(i).get("name").toString(), Integer.parseInt(jsonObjectsVector.get(i).get("popularity").toString()),
-                            Integer.parseInt(jsonObjectsVector.get(i).getJSONObject("followers").get("total").toString()), jsonObjectsVector.get(i).getJSONArray("genres").get(0).toString(),
-                            jsonObjectsVector.get(i).getJSONArray("images").getJSONObject(0).get("url").toString()));
-                }
-                break;
-            case "Chanson":
-                System.out.println("Chanson");
-                break;
-            case "Album":
-                System.out.println("Album");
-                break;
-        }
-    }
+//    public void remplirVector(Vector<JSONObject> vector) throws JSONException {
+//        switch (typeElement) {
+//            case "Artiste":
+//                for (int i = 0; i < jsonObjectsVector.size(); i++) {
+//                    vectorElements.add(new Artiste(jsonObjectsVector.get(i).get("name").toString(), Integer.parseInt(jsonObjectsVector.get(i).get("popularity").toString()),
+//                            Integer.parseInt(jsonObjectsVector.get(i).getJSONObject("followers").get("total").toString()), jsonObjectsVector.get(i).getJSONArray("genres").get(0).toString(),
+//                            jsonObjectsVector.get(i).getJSONArray("images").getJSONObject(0).get("url").toString()));
+//                }
+//                break;
+//            case "Chanson":
+//                System.out.println("Chanson");
+//                break;
+//            case "Album":
+//                System.out.println("Album");
+//                break;
+//        }
+//    }
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;

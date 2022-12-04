@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,19 +47,19 @@ public class Question1 extends AppCompatActivity {
         buttonB = findViewById(R.id.buttonB);
         ec = new Ecouteur();
 
-        // tous ce qui est lier au requête
         requete = new Requete(this,"Artiste");
         question1 = new Question("https://api.spotify.com/v1/artists/0eDvMgVFoNV3TpwtrVCoTj?si=c6jzRYGwSEWNWNyP3kXElA",
-                "https://api.spotify.com/v1/artists/6UCQYrcJ6wab6gnQ89OJFh?si=HC6fuPcKQ4enudg0_oykzQ");
+                "https://api.spotify.com/v1/artists/6UCQYrcJ6wab6gnQ89OJFh?si=HC6fuPcKQ4enudg0_oykzQ","Quel artiste est le plus populaire ?");
 
         requete.ajouter_requête(question1.getUrlArtiste1(),question1.getUrlArtiste2());
         textViewQuestion1.setText(question1.getQuestion());
+        textViewArtiste1.setText("Pop Smoke");
+        textViewArtiste2.setText("Headie One");
 
-
-//        imageArtiste1.setImageUrl();
+//        imageArtiste1.setImageUrl(question1.getUrlArtiste1(),requete.getInstance().getImageLoader());
+//        imageArtiste2.setImageUrl(question1.getUrlArtiste1(),requete.getInstance().getImageLoader());
         buttonA.setOnClickListener(ec);
         buttonB.setOnClickListener(ec);
-
 
     }
 
@@ -66,12 +67,10 @@ public class Question1 extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-
+            if (view.equals(buttonA))
+                Toast.makeText(getApplicationContext(),"Correct Answer",Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(),"Wrong Answer",Toast.LENGTH_SHORT).show();
         }
     }
-
-    public Vector<JSONObject> recupererVector (Vector<JSONObject> vector){
-        return vector;
-    }
-
 }

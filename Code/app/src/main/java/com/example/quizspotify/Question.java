@@ -11,14 +11,10 @@ public class Question {
     private String urlArtiste2;
     private String question;
 
-    public Question(String urlArtiste1, String urlArtiste2) {
+    public Question(String urlArtiste1, String urlArtiste2,String question) {
         this.urlArtiste1 = urlArtiste1;
         this.urlArtiste2 = urlArtiste2;
-        this.question = "Quel artiste est le plus populaire ?";
-    }
-
-    public boolean verifierReponse(String reponse){
-        return reponse.equals("Pop Smoke");
+        this.question = question;
     }
 
     public String getUrlArtiste1() {
