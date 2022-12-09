@@ -9,6 +9,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,28 +24,27 @@ public class Requete {
     private SharedPreferences sharedPreferences;
     private RequestQueueSingleton instance;
     private Context context;
-    private Vector<JSONObject> jsonObjectsVector;
-    private Vector<Object> vectorElements;
-    private String typeElement;
 
-    public Requete(Context context,String typeElement) {
+    public Requete(Context context) {
         this.context = context;
         this.sharedPreferences = context.getApplicationContext().getSharedPreferences("SPOTIFY",0);
         this.instance = RequestQueueSingleton.getInstance(context);
-        this.vectorElements = new Vector<>();
-        this.jsonObjectsVector = new Vector<JSONObject>();
-        this.typeElement = typeElement;
     }
 
-    public JsonObjectRequest creer_requête(String url){
-        return new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
+    public StringRequest creer_requête(String url){
+        return new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new GsonBuilder().create();
 
-            }
-        }
-                , null){
+                        if (context instanceof Question1) {
+                            System.out.println(response);
+                            Artiste artiste = gson.fromJson(response,Artiste.class);
+                            ((Question1)context).afficherInfos(artiste);
+                        }
+                    }
+                },null){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
@@ -55,30 +57,12 @@ public class Requete {
         };
     }
 
-    public void ajouter_requête(String urlArtiste1,String urlArtiste2){
+    public void ajouter_requête(String url1,String url2){
         // On ajoute le premier artiste et le second artiste
-        instance.addToRequestQueue(creer_requête(urlArtiste1));
-        instance.addToRequestQueue(creer_requête(urlArtiste2));
+        instance.addToRequestQueue(creer_requête(url1));
+        instance.addToRequestQueue(creer_requête(url2));
     }
 
-
-//    public void remplirVector(Vector<JSONObject> vector) throws JSONException {
-//        switch (typeElement) {
-//            case "Artiste":
-//                for (int i = 0; i < jsonObjectsVector.size(); i++) {
-//                    vectorElements.add(new Artiste(jsonObjectsVector.get(i).get("name").toString(), Integer.parseInt(jsonObjectsVector.get(i).get("popularity").toString()),
-//                            Integer.parseInt(jsonObjectsVector.get(i).getJSONObject("followers").get("total").toString()), jsonObjectsVector.get(i).getJSONArray("genres").get(0).toString(),
-//                            jsonObjectsVector.get(i).getJSONArray("images").getJSONObject(0).get("url").toString()));
-//                }
-//                break;
-//            case "Chanson":
-//                System.out.println("Chanson");
-//                break;
-//            case "Album":
-//                System.out.println("Album");
-//                break;
-//        }
-//    }
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
@@ -94,21 +78,5 @@ public class Requete {
 
     public void setInstance(RequestQueueSingleton instance) {
         this.instance = instance;
-    }
-
-    public Vector<JSONObject> getJsonObjectsVector() {
-        return jsonObjectsVector;
-    }
-
-    public void setJsonObjectsVector(Vector<JSONObject> jsonObjectsVector) {
-        this.jsonObjectsVector = jsonObjectsVector;
-    }
-
-    public Vector<Object> getVectorElements() {
-        return vectorElements;
-    }
-
-    public void setVectorElements(Vector<Object> vectorElements) {
-        this.vectorElements = vectorElements;
     }
 }

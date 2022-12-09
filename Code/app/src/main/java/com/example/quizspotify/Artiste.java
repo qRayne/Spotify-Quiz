@@ -1,59 +1,42 @@
 package com.example.quizspotify;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Artiste {
-    private String nomArtiste;
-    private int noPopularite;
-    private int nbFollowers;
-    private String genreMusic;
-    private String imageArtiste;
+    private String name;
+    private ArrayList images;
+    private Map<String,Integer> followers;
 
-    public Artiste(String nomArtiste, int noPopularite, int nbFollowers, String genreMusic, String imageArtiste) {
-        this.nomArtiste = nomArtiste;
-        this.noPopularite = noPopularite;
-        this.nbFollowers = nbFollowers;
-        this.genreMusic = genreMusic;
-        this.imageArtiste = imageArtiste;
+
+    public Artiste(String name, ArrayList images,Map<String,Integer> followers) {
+        this.name = name;
+        this.images = images;
+        this.followers = followers;
     }
 
+
     public String getNomArtiste() {
-        return nomArtiste;
+        return name;
     }
 
     public void setNomArtiste(String nomArtiste) {
-        this.nomArtiste = nomArtiste;
+        this.name = nomArtiste;
     }
 
-    public int getNoPopularite() {
-        return noPopularite;
+    public ArrayList getImages() {
+        return images;
     }
 
-    public void setNoPopularite(int noPopularite) {
-        this.noPopularite = noPopularite;
+    public void setImages(ArrayList images) {
+        this.images = images;
     }
 
-    public int getNbFollowers() {
-        return nbFollowers;
+    public Map<String, Integer> getFollowers() {
+        return followers;
     }
 
-    public void setNbFollowers(int nbFollowers) {
-        this.nbFollowers = nbFollowers;
-    }
-
-    public String getGenreMusic() {
-        return genreMusic;
-    }
-
-    public void setGenreMusic(String genreMusic) {
-        this.genreMusic = genreMusic;
-    }
-
-    public String getImageArtiste() {
-        return imageArtiste;
-    }
-
-    public void setImageArtiste(String imageArtiste) {
-        this.imageArtiste = imageArtiste;
+    public void setFollowers(Map<String, Integer> followers) {
+        this.followers = followers;
     }
 }

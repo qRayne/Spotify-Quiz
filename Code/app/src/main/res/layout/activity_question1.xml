@@ -20,13 +20,26 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textViewArtiste1"
+            android:id="@+id/textViewNomArtiste1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textViewNbFollowers1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -40,7 +53,9 @@
             android:id="@+id/textViewQuestion1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="@color/white" />
@@ -75,13 +90,26 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textViewArtiste2"
+            android:id="@+id/textViewNomArtiste2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textViewNbFollowers2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </LinearLayout>

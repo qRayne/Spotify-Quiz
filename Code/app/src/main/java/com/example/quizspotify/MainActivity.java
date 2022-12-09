@@ -111,24 +111,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onResponseRequest(JSONObject reponse) throws JSONException, IOException {
-        vectorArtiste.add(new Artiste(reponse.get("name").toString(), Integer.parseInt(reponse.get("popularity").toString()),
-                Integer.parseInt(reponse.getJSONObject("followers").get("total").toString()), reponse.getJSONArray("genres").get(0).toString(),
-                reponse.getJSONArray("images").getJSONObject(0).get("url").toString()));
-
-        for (int i = 0 ; i< vectorArtiste.size(); i++) {
-            if (i == 0) {
-                nomArtiste1.setText(String.format("le nom de l'artiste : %s", vectorArtiste.get(i).getNomArtiste()));
-                noPopularite1.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
-                nbFollowers1.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
-                genreMusic1.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
-                imageArtiste1.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
-            } else {
-                nomArtiste2.setText(String.format("le nom de l'artiste : %s", vectorArtiste.get(i).getNomArtiste()));
-                noPopularite2.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
-                nbFollowers2.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
-                genreMusic2.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
-                imageArtiste2.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
-            }
-        }
+//        vectorArtiste.add(new Artiste(reponse.get("name").toString(), Integer.parseInt(reponse.get("popularity").toString()),
+//                Integer.parseInt(reponse.getJSONObject("followers").get("total").toString()), reponse.getJSONArray("genres").get(0).toString(),
+//                reponse.getJSONArray("images").getJSONObject(0).get("url").toString()));
+//
+//        for (int i = 0 ; i< vectorArtiste.size(); i++) {
+//            if (i == 0) {
+//                nomArtiste1.setText(String.format("le nom de l'artiste : %s", vectorArtiste.get(i).getNomArtiste()));
+//                noPopularite1.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
+//                nbFollowers1.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
+//                genreMusic1.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
+//                imageArtiste1.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
+//            } else {
+//                nomArtiste2.setText(String.format("le nom de l'artiste : %s", vectorArtiste.get(i).getNomArtiste()));
+//                noPopularite2.setText(String.format("son classement dans son pays : %s", vectorArtiste.get(i).getNoPopularite()));
+//                nbFollowers2.setText(String.format("son nombre de followers : %s", vectorArtiste.get(i).getNbFollowers()));
+//                genreMusic2.setText(String.format("son genre de musique : \n %s", vectorArtiste.get(i).getGenreMusic()));
+//                imageArtiste2.setImageUrl(vectorArtiste.get(i).getImageArtiste(),instance.getImageLoader());
+//            }
+//        }
     }
 }
