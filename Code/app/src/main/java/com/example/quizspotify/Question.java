@@ -7,31 +7,35 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.Vector;
 
 public class Question {
-    private String urlArtiste1;
-    private String urlArtiste2;
     private String question;
+    private String typeQuestion;
+    private String reponse1;
+    private String reponse2;
 
-    public Question(String urlArtiste1, String urlArtiste2,String question) {
-        this.urlArtiste1 = urlArtiste1;
-        this.urlArtiste2 = urlArtiste2;
+    public Question(String question, String typeQuestion) {
         this.question = question;
+        this.typeQuestion = typeQuestion;
     }
 
-    public String getUrlArtiste1() {
-        return urlArtiste1;
+    public boolean verifierReponse(String reponse){
+        boolean bonneReponse = false;
+
+        switch (typeQuestion) {
+            case "Artiste":
+                if (question.equals("Quel artiste est le plus populaire ?"))
+                    if (reponse.equals("Pop Smoke"))
+                        bonneReponse = true;
+                break;
+            case "Album":
+
+                break;
+            case "Chanson":
+
+                break;
+        }
+        return bonneReponse;
     }
 
-    public void setUrlArtiste1(String urlArtiste1) {
-        this.urlArtiste1 = urlArtiste1;
-    }
-
-    public String getUrlArtiste2() {
-        return urlArtiste2;
-    }
-
-    public void setUrlArtiste2(String urlArtiste2) {
-        this.urlArtiste2 = urlArtiste2;
-    }
 
     public String getQuestion() {
         return question;
@@ -41,4 +45,27 @@ public class Question {
         this.question = question;
     }
 
+    public String getTypeQuestion() {
+        return typeQuestion;
+    }
+
+    public void setTypeQuestion(String typeQuestion) {
+        this.typeQuestion = typeQuestion;
+    }
+
+    public String getReponse1() {
+        return reponse1;
+    }
+
+    public void setReponse1(String reponse1) {
+        this.reponse1 = reponse1;
+    }
+
+    public String getReponse2() {
+        return reponse2;
+    }
+
+    public void setReponse2(String response2) {
+        this.reponse2 = response2;
+    }
 }

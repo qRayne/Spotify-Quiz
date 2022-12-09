@@ -24,11 +24,14 @@ public class Requete {
     private SharedPreferences sharedPreferences;
     private RequestQueueSingleton instance;
     private Context context;
+    private String url1,url2;
 
-    public Requete(Context context) {
+    public Requete(Context context,String url1,String url2) {
         this.context = context;
         this.sharedPreferences = context.getApplicationContext().getSharedPreferences("SPOTIFY",0);
         this.instance = RequestQueueSingleton.getInstance(context);
+        this.url1 = url1;
+        this.url2 = url2;
     }
 
     public StringRequest creer_requête(String url){
@@ -57,7 +60,7 @@ public class Requete {
         };
     }
 
-    public void ajouter_requête(String url1,String url2){
+    public void ajouter_requête(){
         // On ajoute le premier artiste et le second artiste
         instance.addToRequestQueue(creer_requête(url1));
         instance.addToRequestQueue(creer_requête(url2));
