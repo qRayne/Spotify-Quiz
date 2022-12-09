@@ -27,7 +27,7 @@ public class Question1 extends AppCompatActivity {
         setContentView(R.layout.activity_question1);
 
         // les setters
-        imageArtiste1 = findViewById(R.id.imageViewArtiste1);
+        imageArtiste1 = findViewById(R.id.imageViewAlbum1);
         imageArtiste2 = findViewById(R.id.imageViewArtiste2);
         textViewArtiste1 = findViewById(R.id.textViewNomArtiste1);
         textViewArtiste2 = findViewById(R.id.textViewNomArtiste2);

@@ -42,9 +42,12 @@ public class Requete {
                         Gson gson = new GsonBuilder().create();
 
                         if (context instanceof Question1) {
-                            System.out.println(response);
                             Artiste artiste = gson.fromJson(response,Artiste.class);
                             ((Question1)context).afficherInfos(artiste);
+                        }
+                        else if (context instanceof Question2){
+                            Album album = gson.fromJson(response,Album.class);
+                            ((Question2)context).afficherInfos(album);
                         }
                     }
                 },null){

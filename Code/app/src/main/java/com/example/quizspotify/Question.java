@@ -27,7 +27,10 @@ public class Question {
                         bonneReponse = true;
                 break;
             case "Album":
-
+                if (question.equals("Quel album est le plus récent ?")){
+                    if (reponse.equals("Her loss"))
+                        bonneReponse = true;
+                }
                 break;
             case "Chanson":
 
