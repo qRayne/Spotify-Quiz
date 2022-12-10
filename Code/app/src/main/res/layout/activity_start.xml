@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#191414"
     android:gravity="center"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonQuestion1"
+    <ImageView
+        android:id="@+id/logoSpotify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 1" />
+        android:layout_gravity="center"
+        android:translationY="-250px"
+        app:srcCompat="@drawable/spotify_logo_png_7053" />
+
+    <ImageView
+        android:id="@+id/imageViewQuizLogo"
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:layout_gravity="center"
+        android:translationY="-200px"
+        app:srcCompat="@drawable/colorful_quiz_text_logo_png_11580987051crx6ryqgdx" />
 
     <Button
-        android:id="@+id/buttonQuestion2"
+        android:id="@+id/buttonStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 2 " />
-
-    <Button
-        android:id="@+id/buttonQuestion3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Question 3" />
+        android:layout_gravity="center"
+        android:background="#1DB954"
+        android:text="Start"
+        android:translationY="-50px" />
 
 </LinearLayout>
