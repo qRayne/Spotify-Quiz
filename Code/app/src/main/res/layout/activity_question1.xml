@@ -65,13 +65,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Pop Smoke" />
+            android:background="#1DB954"
+            android:text="Pop Smoke"
+            android:translationY="-20px" />
 
         <Button
             android:id="@+id/buttonHeadieOne"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="#1DB954"
             android:text="Headie One" />
 
     </LinearLayout>

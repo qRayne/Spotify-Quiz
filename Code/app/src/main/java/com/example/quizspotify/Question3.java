@@ -43,7 +43,7 @@ public class Question3 extends AppCompatActivity {
                 "https://api.spotify.com/v1/tracks/6gHWMJzCYkbDcsqKHoycJw?si=4a2c0cb4c3cc42d7");
         requete.ajouter_requête();
 
-        question3 = new Question("Quel Track à été la plus populaire chez l'artiste 21 Savage ?","Track");
+        question3 = new Question("Quel track à été la plus populaire chez l'artiste 21 Savage ?","Track");
         textViewQuestion3.setText(question3.getQuestion());
 
         buttonSnitch.setOnClickListener(ec);
@@ -53,29 +53,44 @@ public class Question3 extends AppCompatActivity {
     private class Ecouteur implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            Intent intent = new Intent(Question3.this, ResultActivity.class);
+            Bundle extras = getIntent().getExtras();
+
             if (question3.verifierReponse(((Button)v).getText().toString())) {
+                buttonSnitch.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
                 textViewAnswerTrack1.setVisibility(View.VISIBLE);
                 textViewAnswerTrack2.setVisibility(View.VISIBLE);
-                textViewAnswerTrack1.setText(String.format("%se Track la plus populaire chez 21 Savage", question3.getReponse1()));
-                textViewAnswerTrack2.setText(String.format("%se Track la plus populaire chez 21 Savage", question3.getReponse2()));
+                textViewAnswerTrack1.setText(String.format("%se track la plus populaire chez 21 Savage", question3.getReponse1()));
+                textViewAnswerTrack2.setText(String.format("%se track la plus populaire chez 21 Savage", question3.getReponse2()));
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent startNewActivity = new Intent(Question3.this, StartActivity.class);
-                        startActivity(startNewActivity);
-                    }
-                },3000);
+                if (extras.get("Score").equals("2"))
+                    intent.putExtra("Score","3");
+                else if (extras.get("Score").equals("1"))
+                    intent.putExtra("Score","2");
+                else
+                    intent.putExtra("Score","1");
             }
             else {
+                buttonFacetime.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT).show();
-                new android.os.Handler().postDelayed(Question3.this::recreate,3000);
+
+                if (extras.get("Score").equals("2"))
+                    intent.putExtra("Score","2");
+                else if (extras.get("Score").equals("1"))
+                    intent.putExtra("Score","1");
+                else
+                    intent.putExtra("Score","0");
             }
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(intent);
+                }
+            },3000);
         }
     }
-
-
 
     public void afficherInfos(Track track){
         if (track.getName().equals("Snitches & Rats (feat. Young Nudy)")){

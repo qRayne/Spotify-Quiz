@@ -60,13 +60,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Her loss" />
+            android:background="#1DB954"
+            android:text="Her loss"
+            android:translationY="-20px" />
 
         <Button
             android:id="@+id/buttonDarkLane"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="#1DB954"
             android:text="DARK LANE DEMO TAPES" />
     </LinearLayout>
 

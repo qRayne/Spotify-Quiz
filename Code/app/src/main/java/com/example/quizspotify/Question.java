@@ -33,7 +33,7 @@ public class Question {
                 }
                 break;
             case "Track":
-                if (question.equals("Quel Track à été la plus populaire chez l'artiste 21 Savage ?")){
+                if (question.equals("Quel track à été la plus populaire chez l'artiste 21 Savage ?")){
                     if (reponse.equals("Facetime"))
                         bonneReponse = true;
                 }

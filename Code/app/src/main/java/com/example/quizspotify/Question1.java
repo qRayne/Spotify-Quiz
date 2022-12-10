@@ -53,25 +53,29 @@ public class Question1 extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent(Question1.this, Question2.class);
+
             if (question1.verifierReponse(((Button)view).getText().toString())) {
+                buttonHeadieOne.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
                 textViewNbFollowers1.setVisibility(View.VISIBLE);
                 textViewNbFollowers2.setVisibility(View.VISIBLE);
                 textViewNbFollowers1.setText(String.format("%s Followers", question1.getReponse1()));
                 textViewNbFollowers2.setText(String.format("%s Followers", question1.getReponse2()));
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent startNewActivity = new Intent(Question1.this, Question2.class);
-                        startActivity(startNewActivity);
-                    }
-                },3000);
+                intent.putExtra("Score","1");
             }
             else {
+                buttonPopSmoke.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT).show();
-                new android.os.Handler().postDelayed(Question1.this::recreate,3000);
+                intent.putExtra("Score","0");
             }
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(intent);
+                }
+            },3000);
         }
     }
 

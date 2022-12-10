@@ -59,25 +59,38 @@ public class Question2 extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+            Intent intent = new Intent(Question2.this, Question3.class);
+            Bundle extras = getIntent().getExtras();
+
             if (question2.verifierReponse(((Button)v).getText().toString())) {
+                buttonDarkLane.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
                 textViewAnswer1.setVisibility(View.VISIBLE);
                 textViewAnswer2.setVisibility(View.VISIBLE);
                 textViewAnswer1.setText(String.format("Date de sortie : %s", question2.getReponse1()));
                 textViewAnswer2.setText(String.format("Date de sortie : %s", question2.getReponse2()));
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent startNewActivity = new Intent(Question2.this, Question3.class);
-                        startActivity(startNewActivity);
-                    }
-                },3000);
+                if (extras.get("Score").equals("1"))
+                    intent.putExtra("Score","2");
+                else
+                    intent.putExtra("Score","1");
             }
             else {
+                buttonHerLoss.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT).show();
-                new android.os.Handler().postDelayed(Question2.this::recreate,3000);
+
+                if (extras.get("Score").equals("1"))
+                    intent.putExtra("Score","1");
+                else
+                    intent.putExtra("Score","0");
             }
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(intent);
+                }
+            },3000);
         }
     }
 

@@ -24,8 +24,9 @@ import java.util.Vector;
 public class Requete {
     private SharedPreferences sharedPreferences;
     private RequestQueueSingleton instance;
-    private Context context;
-    private String url1,url2;
+    private final Context context;
+    private final String url1;
+    private final String url2;
 
     public Requete(Context context,String url1,String url2) {
         this.context = context;
