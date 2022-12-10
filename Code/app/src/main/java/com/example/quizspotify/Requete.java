@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,6 +49,18 @@ public class Requete {
                         else if (context instanceof Question2){
                             Album album = gson.fromJson(response,Album.class);
                             ((Question2)context).afficherInfos(album);
+                        }
+                        else if (context instanceof Question3){
+                            Track track = gson.fromJson(response,Track.class);
+                            if (track.getImage() == null) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    track.setImages((String) ((JSONArray)((JSONObject)jsonObject.get("album")).get("images")).getJSONObject(0).get("url"));
+                                    ((Question3)context).afficherInfos(track);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         }
                     }
                 },null){

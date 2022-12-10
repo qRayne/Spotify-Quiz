@@ -32,8 +32,11 @@ public class Question {
                         bonneReponse = true;
                 }
                 break;
-            case "Chanson":
-
+            case "Track":
+                if (question.equals("Quel Track à été la plus populaire chez l'artiste 21 Savage ?")){
+                    if (reponse.equals("Facetime"))
+                        bonneReponse = true;
+                }
                 break;
         }
         return bonneReponse;

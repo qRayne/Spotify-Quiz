@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -30,7 +29,7 @@ public class Question2 extends AppCompatActivity {
 
 
         // les find view by id
-        imageAlbum1 = findViewById(R.id.imageViewAlbum1);
+        imageAlbum1 = findViewById(R.id.imageViewTrack1);
         imageAlbum2 = findViewById(R.id.imageViewAlbum2);
         textViewAlbum1 = findViewById(R.id.textViewAlbum1);
         textViewAlbum2 = findViewById(R.id.textViewAlbum2);
