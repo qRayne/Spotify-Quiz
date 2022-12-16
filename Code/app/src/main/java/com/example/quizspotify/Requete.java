@@ -78,7 +78,7 @@ public class Requete {
     }
 
     public void ajouter_requête(){
-        // On ajoute le premier artiste et le second artiste
+        // On ajoute le premier élément et le second élément
         instance.addToRequestQueue(creer_requête(url1));
         instance.addToRequestQueue(creer_requête(url2));
     }
@@ -88,15 +88,9 @@ public class Requete {
         return sharedPreferences;
     }
 
-    public void setSharedPreferences(SharedPreferences sharedPreferences) {
-        this.sharedPreferences = sharedPreferences;
-    }
 
     public RequestQueueSingleton getInstance() {
         return instance;
     }
 
-    public void setInstance(RequestQueueSingleton instance) {
-        this.instance = instance;
-    }
 }
